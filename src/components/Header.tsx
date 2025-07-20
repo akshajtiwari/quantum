@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Pause, Sun, Moon, Download, Upload, Code, Eye, Trash2, Settings, Atom, Plus, Minus, Bot, Lightbulb, Wrench, BarChart3, TrendingUp } from 'lucide-react';
+import { Play, Pause, Sun, Moon, Download, Upload, Code, Eye, Trash2, Settings, Atom, Plus, Minus, Bot, Lightbulb, Wrench, BarChart3, TrendingUp, Save, FolderOpen } from 'lucide-react';
 import { Backend } from '../types/quantum';
 
 interface HeaderProps {
@@ -20,6 +20,8 @@ interface HeaderProps {
   onExport: () => void;
   onImport: () => void;
   onClear: () => void;
+  onSaveBackup: () => void;
+  onLoadBackup: () => void;
   numQubits: number;
   onNumQubitsChange: (numQubits: number) => void;
   activeBottomPanel: 'chat' | 'suggest' | 'fix' | 'none';
@@ -44,6 +46,8 @@ export const Header: React.FC<HeaderProps> = ({
   onExport,
   onImport,
   onClear,
+  onSaveBackup,
+  onLoadBackup,
   numQubits,
   onNumQubitsChange,
   activeBottomPanel,
@@ -209,6 +213,22 @@ export const Header: React.FC<HeaderProps> = ({
             title="Import Circuit"
           >
             <Upload className="w-5 h-5" />
+          </button>
+          
+          <button
+            onClick={onSaveBackup}
+            className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            title="Save Backup"
+          >
+            <Save className="w-5 h-5" />
+          </button>
+          
+          <button
+            onClick={onLoadBackup}
+            className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            title="Load Backup"
+          >
+            <FolderOpen className="w-5 h-5" />
           </button>
           
           <button
